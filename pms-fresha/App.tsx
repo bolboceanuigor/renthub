@@ -13,10 +13,12 @@ import InboxScreen from './src/screens/InboxScreen';
 import TasksScreen from './src/screens/TasksScreen';
 import AnalyticsScreen from './src/screens/AnalyticsScreen';
 import SettingsScreen from './src/screens/SettingsScreen';
+import NewBookingScreen from './src/screens/NewBookingScreen';
 import { useThemeColors } from './src/theme/theme';
 
 const Tab = createBottomTabNavigator();
-const Stack = createNativeStackNavigator();
+import type { RootStackParamList } from './src/navigation/types';
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function Tabs() {
   const colors = useThemeColors();
@@ -85,6 +87,7 @@ export default function App() {
       <NavigationContainer theme={navTheme}>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Root" component={Tabs} />
+          <Stack.Screen name="NewBooking" component={NewBookingScreen} />
         </Stack.Navigator>
       </NavigationContainer>
       <StatusBar style="dark" />

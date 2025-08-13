@@ -1,17 +1,19 @@
 import React from 'react';
 import { ScrollView, View, Text } from 'react-native';
 import dayjs from '@/lib/dayjs';
+import { useNavigation } from '@react-navigation/native';
 import { bookings, properties } from '../data/mock';
 import { useThemeColors, spacing, typography, radius } from '../theme/theme';
-import { Card, Chip } from '../components/ui';
+import { Card, Chip, Button, Row } from '../components/ui';
 
 export default function BookingsScreen() {
 	const colors = useThemeColors();
+	const navigation = useNavigation();
 	const propertyById = new Map(properties.map(p => [p.id, p]));
 
 	return (
 		<ScrollView style={{ flex: 1, backgroundColor: colors.background }} contentContainerStyle={{ padding: spacing.lg, gap: spacing.md }}>
-			<Text style={{ fontSize: 28, fontWeight: '800' }}>Rezervări</Text>
+			<Row left={<Text style={{ fontSize: 28, fontWeight: '800' }}>Rezervări</Text>} right={<Button title="Nouă" icon="add-outline" type="ghost" onPress={() => navigation.navigate('NewBooking' as never)} />} />
 			{bookings.map(b => (
 				<Card key={b.id}>
 					<View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
