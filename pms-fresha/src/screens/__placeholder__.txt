@@ -1,0 +1,1 @@
+This file exists to ensure the screens directory is committed even if empty in early scaffolding.
